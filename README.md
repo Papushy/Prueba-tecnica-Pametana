@@ -9,10 +9,10 @@ La aplicación permite calcular métricas clave de rendimiento, aplicar filtros 
 ## 🚀 Cómo Ejecutar el Proyecto
 
 ### 1. Requisitos Previos
-Asegúrate de tener instalado Python (versión 3.8 o superior) y las librerías `pandas , customtkinters`. Si no tienes las librerías, puedes instalarlas ejecutando:
+Asegúrate de tener instalado Python (versión 3.8 o superior) y las librerías `pandas, customtkinter, transformers, torch`. Si no tienes las librerías, puedes instalarlas ejecutando:
 
 bash
-pip install pandas customtkinter
+pip install pandas transformers customtkinter torch
 
 
 ### 2. Estructura de archivos
@@ -32,9 +32,13 @@ He hecho una pequeña investigacion para ver que libreria me facilitaria el trab
 En este caso he dividido en 3 clases distintas el trabajo del script esto para no saturar de codigo un solo archivo .py y a la hora de gestionar cambios o errores sea mas sencillo buscar
 
 ### 3. Exportacion de reporte 
-He decidido exportarlo tanto en consola para ver que los datos esten correctos como desarrollador, como en JSON
+He decidido exportarlo tanto en consola para ver que los datos esten correctos como desarrollador, como en JSON.
+
 ### 4. Interfaz visual
 Para no tener que modificar el codigo cada vez que haya cambios en el archivo o en la palabra clave he creado una interfaz visual esta nos valdra para una ejecucion manual del script
+
+### 5. Implementacion de Inteligencia Artificial
+Al no tener acceso a una API he usado una IA local para analizar el sentimiento 
 
 ---
 

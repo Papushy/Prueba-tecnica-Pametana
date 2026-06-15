@@ -1,6 +1,7 @@
 import json
-from csv_analyzer import CsvAnalyzer
 from datetime import datetime
+import pandas as pd
+from csv_analyzer import CsvAnalyzer
 
 
 class CsvReportGenerator:
@@ -28,6 +29,8 @@ class CsvReportGenerator:
                 },
                 "menciones_por_medio": self.analizador.obtener_menciones_medio(),
                 "menciones_por_fecha": self.analizador.obtener_menciones_fecha(),
+                # 🤖 Añadimos las métricas calculadas por la IA
+                "analisis_sentimiento": self.analizador.analizar_sentimiento_menciones(),
             },
         }
         return estructura
@@ -49,6 +52,13 @@ class CsvReportGenerator:
         alcance_top = metricas["medio_mayor_alcance"]["alcance_acumulado"]
         print(
             f"🔹 Medio con mayor alcance : {medio_top} ({alcance_top:,} impactos)"
+        )
+
+        # 🤖 Mostramos el resultado de la IA por consola
+        sent = metricas["analisis_sentimiento"]
+        print(
+            f"\n🤖 Análisis de Sentimiento (IA):\n"
+            f"   🟢 Positivos: {sent['Positivo']} | ⚪ Neutros: {sent['Neutro']} | 🔴 Negativos: {sent['Negativo']}"
         )
 
         print("\n📈 Menciones por medio:")
