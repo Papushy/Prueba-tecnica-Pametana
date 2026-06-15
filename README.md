@@ -6,20 +6,20 @@ La aplicación permite calcular métricas clave de rendimiento, aplicar filtros 
 
 ---
 
-## 🚀 Cómo Ejecutar el Proyecto
+## Cómo Ejecutar el Proyecto
 
 ### 1. Requisitos Previos
-Asegúrate de tener instalado Python (versión 3.8 o superior) y las librerías `pandas, customtkinter, transformers, torch`. Si no tienes las librerías, puedes instalarlas ejecutando:
+Asegúrate de tener instalado Python (versión 3.8 o superior) y la librería `pandas`. Si no tienes la librería, puedes instalarla ejecutando:
 
 bash
-pip install pandas transformers customtkinter torch
-
+pip install pandas
 
 ### 2. Estructura de archivos
 Todos los archivos .py deben estar en el mismo directorio
 
-### 3. Ejecucion 
-Ejecutaremos el script ui.py abrira una interfaz visual donde buscaremos el csv y pondremos la palabra clave (si no hay palabra clave se hará el reporte de todo) 
+### 3. Automatizacion de script
+Abrimos el programador de tareas y crearemos una nueva tarea diaria de ejecucion y elegiremos ejecutar_analisis.bat a la hora que convenga
+
 
 ---
 
@@ -32,13 +32,10 @@ He hecho una pequeña investigacion para ver que libreria me facilitaria el trab
 En este caso he dividido en 3 clases distintas el trabajo del script esto para no saturar de codigo un solo archivo .py y a la hora de gestionar cambios o errores sea mas sencillo buscar
 
 ### 3. Exportacion de reporte 
-He decidido exportarlo tanto en consola para ver que los datos esten correctos como desarrollador, como en JSON.
+He decidido exportarlo tanto en consola para ver que los datos esten correctos como desarrollador, como en JSON
 
-### 4. Interfaz visual
-Para no tener que modificar el codigo cada vez que haya cambios en el archivo o en la palabra clave he creado una interfaz visual esta nos valdra para una ejecucion manual del script
-
-### 5. Implementacion de Inteligencia Artificial
-Al no tener acceso a una API he usado una IA local para analizar el sentimiento 
+### 4.Automatizacion
+He usado el programador de tareas para no tener que descargar ningun programa externo ademas de la sencillez de uso
 
 ---
 
@@ -50,3 +47,6 @@ Añadiria mas tipos de consultas para poder sacar mas datos
 ### Base de Datos
 Guardaria la informacion del csv en una base de datos en la nube para que la informacion siempre este disponible sin importar el dispositivo asi en caso de en un futuro tener 
 otro tipo de informacion relacionada con este csv sea solo añadir nuevas tablas a nuestra BBDD.
+
+### Tendencia con IA
+Que la inteligencia artificial analice y haga el reporte con las palabras claves mas utilizadas en las menciones.

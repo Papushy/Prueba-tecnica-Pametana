@@ -1,8 +1,6 @@
 import json
-from datetime import datetime
-import pandas as pd
 from csv_analyzer import CsvAnalyzer
-
+from datetime import datetime
 
 class CsvReportGenerator:
 
@@ -29,8 +27,6 @@ class CsvReportGenerator:
                 },
                 "menciones_por_medio": self.analizador.obtener_menciones_medio(),
                 "menciones_por_fecha": self.analizador.obtener_menciones_fecha(),
-                # 🤖 Añadimos las métricas calculadas por la IA
-                "analisis_sentimiento": self.analizador.analizar_sentimiento_menciones(),
             },
         }
         return estructura
@@ -54,13 +50,6 @@ class CsvReportGenerator:
             f"🔹 Medio con mayor alcance : {medio_top} ({alcance_top:,} impactos)"
         )
 
-        # 🤖 Mostramos el resultado de la IA por consola
-        sent = metricas["analisis_sentimiento"]
-        print(
-            f"\n🤖 Análisis de Sentimiento (IA):\n"
-            f"   🟢 Positivos: {sent['Positivo']} | ⚪ Neutros: {sent['Neutro']} | 🔴 Negativos: {sent['Negativo']}"
-        )
-
         print("\n📈 Menciones por medio:")
         for medio, cantidad in metricas["menciones_por_medio"].items():
             print(f"   - {medio:18}: {cantidad} noticia(s)")
@@ -71,8 +60,11 @@ class CsvReportGenerator:
         print("=" * 60 + "\n")
 
     def exportar_json(self, ruta_archivo: str):
-        # 🗓️ Metemos la fecha de hoy automáticamente en el nombre
+        # 1. Sacamos la fecha de hoy (Ej: 2026-06-14)
         fecha_hoy = datetime.now().strftime("%Y-%m-%d")
+
+        # 2. Rompemos el nombre para meterle la fecha antes del .json
+        # Si entra "informe_general.json", lo cambia a "informe_general_2026-06-14.json"
         nombre, extension = ruta_archivo.rsplit(".", 1)
         ruta_con_fecha = f"{nombre}_{fecha_hoy}.{extension}"
 
@@ -81,3 +73,5 @@ class CsvReportGenerator:
             json.dump(datos, reporte, ensure_ascii=False, indent=4)
 
         print(f"💾 Informe JSON exportado con éxito a: {ruta_con_fecha}")
+
+    
